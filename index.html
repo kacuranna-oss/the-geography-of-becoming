@@ -172,6 +172,9 @@ details > summary .count { font-weight: 500; color: var(--soft); font-variant-nu
 .bio .born { margin: 0 0 24px; color: var(--soft); font-size: 16px; }
 .bio p { margin: 0 0 1em; max-width: 60ch; }
 .bio h4 { margin: 36px 0 12px; font-size: 17px; font-weight: 600; }
+.cv .cv-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px var(--gutter); margin-top: 28px; }
+.cv h4 { margin: 0 0 12px; font-size: 17px; font-weight: 600; }
+@media (max-width: 820px) { .cv .cv-cols { grid-template-columns: 1fr; } }
 .ex { list-style: none; margin: 0; padding: 0; font-size: 16px; line-height: 1.4; }
 .ex li { display: grid; grid-template-columns: 5.2em minmax(0, 1fr); column-gap: 12px; padding: 9px 0; border-top: 1px solid rgba(20, 20, 20, 0.18); }
 .ex .yr { grid-row: span 2; font-weight: 600; font-variant-numeric: tabular-nums; }
@@ -179,6 +182,53 @@ details > summary .count { font-weight: 500; color: var(--soft); font-variant-nu
 @media (max-width: 820px) { .bios { grid-template-columns: 1fr; } }
 
 footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 40px var(--gutter) 56px; font-size: 15px; font-weight: 500; }
+
+/* artists: one row per artist, intro, stations and exhibitions */
+.people { list-style: none; margin: 0; padding: 0; }
+.person { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 16px var(--gutter); padding: 34px 0; border-top: 1px solid rgba(20, 20, 20, 0.18); }
+.person:last-child { border-bottom: 1px solid rgba(20, 20, 20, 0.18); }
+.person h3 { margin: 0; font-weight: 600; font-size: clamp(32px, 4.4vw, 68px); line-height: 1.02; letter-spacing: -0.015em; }
+.person p { margin: 0 0 0.9em; max-width: 60ch; font-size: clamp(17px, 1.25vw, 20px); }
+.person .at { font-size: 16px; font-weight: 500; color: var(--soft); }
+.person .at a { display: inline-block; margin-left: 6px; padding: 0.05em 0.45em 0.1em; border: 1.5px solid var(--ink); color: var(--ink); text-decoration: none; font-weight: 600; font-variant-numeric: tabular-nums; }
+.person .at a:hover { color: var(--blue); border-color: var(--blue); }
+.person details.cv { margin-top: 18px; }
+.cv > .ex { margin-top: 16px; max-width: 640px; font-size: 15px; line-height: 1.35; }
+.cv > .ex li { grid-template-columns: 3.2em minmax(0, 1fr); column-gap: 10px; padding: 6px 0; }
+.cv > .ex .yr { grid-row: auto; color: var(--soft); font-weight: 500; }
+.cv > .ex .ex-t { font-weight: 500; }
+.cv > .ex .ex-p { font-weight: 400; }
+/* stations */
+.st-intro { max-width: 60ch; margin: 0 0 28px; font-size: clamp(18px, 1.35vw, 21px); }
+.st-index { display: flex; flex-wrap: wrap; gap: 10px 12px; }
+.st-index a { padding: 0.3em 0.7em 0.34em; border: 1.5px solid var(--ink); background: var(--paper); text-decoration: none; font-size: 16px; font-weight: 500; }
+.st-index a b { font-weight: 700; margin-right: 6px; font-variant-numeric: tabular-nums; }
+.st-index a:hover { color: var(--blue); border-color: var(--blue); }
+.station { margin-top: clamp(72px, 9vw, 140px); padding-top: 28px; border-top: 1.5px solid var(--ink); }
+.station > header { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 7fr); gap: 16px var(--gutter); margin-bottom: clamp(36px, 4vw, 56px); }
+.station > header .st-no { display: inline-block; align-self: start; margin: 0; max-width: none; font-weight: 700; font-size: clamp(96px, 14vw, 230px); line-height: 0.78; letter-spacing: -0.05em;
+  background: linear-gradient(165deg, var(--blue) 10%, var(--violet) 42%, var(--red) 68%, var(--orange) 92%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.station > header .st-k { margin: 0 0 12px; font-size: 16px; font-weight: 500; color: var(--soft); }
+.station h3 { margin: 0 0 22px; font-weight: 700; font-size: clamp(32px, 4vw, 62px); line-height: 1; letter-spacing: -0.02em; }
+.station header p { margin: 0 0 1em; max-width: 58ch; font-size: clamp(18px, 1.4vw, 22px); }
+
+.station .ps { font-style: italic; color: var(--soft); }
+.st-works { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(56px, 6vw, 96px) var(--gutter); align-items: start; }
+.st-works.one { grid-template-columns: minmax(0, 1fr); }
+.st-works.one .st-work { width: min(100%, 820px); }
+.st-work { margin: 0; }
+.st-work .thumb img { max-height: 72vh; width: auto; max-width: 100%; }
+.st-work .by { margin: 16px 0 0; font-size: 18px; font-weight: 600; }
+.st-work .by a { text-decoration: none; }
+.st-work .by a:hover { text-decoration: underline; }
+.st-work .tag { margin: 12px 0 0; font-weight: 600; }
+.st-work .tag .plate { --r: -1.2deg; background: var(--ink); color: var(--paper); }
+.st-work details.about-work { margin-top: 18px; }
+.st-work .about-work .txt p { font-size: 16px; }
+@media (max-width: 820px) {
+  .person, .station > header, .st-works { grid-template-columns: 1fr; }
+  .station > header .st-no { font-size: clamp(88px, 28vw, 150px); }
+}
 
 /* lightbox */
 .lb { position: fixed; inset: 0; z-index: 50; display: none; place-items: center; padding: 4vh 4vw; background: rgba(241, 240, 236, 0.97); }
@@ -534,7 +584,7 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 <a class="home" href="#top">The Geography of Becoming</a>
 <a href="#statement">Statement</a>
 <a href="#artists">Artists</a>
-<a href="#works">Artworks</a>
+<a href="#works">Stations</a>
 <a href="#visit">Visit</a>
 </nav>
 
@@ -543,78 +593,168 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 <p class="label"><span class="plate">Curatorial statement</span></p>
 <div>
 <h2>Every change has a geography.</h2>
-<p>When Maureen Murdock asked Joseph Campbell about the heroine’s journey, he reportedly told her that women did not need to make the journey. In his understanding, woman was the place the hero was trying to reach.</p>
-<p>But could he have known from within what it means to move through the world as a woman?</p>
-<p>And what a strange idea: that half of humanity might be the destination of someone else’s adventure rather than the protagonist of its own.</p>
-<p><em>The Geography of Becoming</em> brings together six women artists, each exploring the journey through her own experience. But are we the sole authors of our journeys? Or is something else writing alongside us?</p>
-<p>In Anna Katsur’s paintings, the future is almost visible. It glows beyond a window or waits at the end of a succession of doorways. Yet the promise of arriving somewhere better can make us strangers to the life we are already living.</p>
-<p>In Inessa Garder’s paintings, a decision can change everything in an instant. But beneath the bridges we choose to cross, the Ganges continues to flow, indifferent to our plans.</p>
-<p>Karina Mukhametkulova places a door knocker on a wall without a door. What happens when an opportunity arrives in a form we do not recognise? Chieh-Lin Wu moves a tower into the middle of a lake, leaving its staircase descending towards uncertain depths. Even the ground we thought was solid can shift. In Anastasia Klimova’s work, human figures appear and dissolve, suggesting that the person who begins a journey may not be the same person who continues it. In Anna Savina’s <em>Take me with you</em>, alcohol ink spreads and settles on its own, and the artist follows where it goes.</p>
-<p>Perhaps we have misunderstood the relationship between the traveller and the path.</p>
-<p>We speak of our journeys as though they belong entirely to us. But who, exactly, is doing the creating? The woman who makes the decision? The river that carries her somewhere unexpected? The encounter that changes what she desires in the first place?</p>
-<p>And if the journey is a collaboration, what does it mean to be its author?</p>
-<p>Perhaps the heroine’s journey is neither a route prescribed for her nor a story she writes entirely alone. Perhaps it is a dance with the universe, and its geography is created as she moves.</p>
+<p>We like to think of our lives as stories we write ourselves. We make decisions, imagine futures, choose where to go and what to leave behind.</p>
+<p>But the world has a curious habit of participating.</p>
+<p>A beautiful future glows beyond a window, making the present difficult to inhabit. A bridge stretches across a river whose currents have their own direction. A door knocker appears where there is no door. A familiar tower stands in unfamiliar waters. Human figures emerge and dissolve, as though even the traveller herself cannot remain unchanged.</p>
+<p><em>The Geography of Becoming</em> brings together six women artists exploring the relationship between the traveller and her path: how we shape it, how it shapes us, and what remains with us along the way.</p>
+<p>The exhibition unfolds through a series of stations, without a prescribed order or a final destination. Visitors may enter at any point, follow different routes and return to places they have already encountered.</p>
+<p>Perhaps our lives unfold in much the same way. We revisit old questions from new perspectives. A place we have left continues to live within us. An experience changes the meaning of something that happened years before. We carry traces of everywhere we have been, even as we move towards somewhere unknown.</p>
+<p>But these traces do more than remind us where we have been. They change what we are able to see and who we are. A path that once seemed closed may reveal an opening. A destination that once felt essential may no longer matter. We may return to exactly the same place and find ourselves in an entirely different landscape.</p>
+<p>The journey changes the traveller. And the traveller, changed, discovers a different geography.</p>
 </div>
 </section>
 
 <section class="artists" id="artists">
 <p class="label"><span class="plate" style="--r: 0.8deg">Artists</span></p>
-<ul class="names">
-<li><a class="plate" href="#works-katsur">Anna Katsur</a></li>
-<li><a class="plate" href="#works-garder">Inessa Garder</a></li>
-<li><a class="plate" href="#works-mukhametkulova">Karina Mukhametkulova</a></li>
-<li><a class="plate" href="#works-klimova">Anastasia Klimova</a></li>
-<li><a class="plate" href="#works-savina">Anna Savina</a></li>
-<li><a class="plate" href="#works-wu">Chieh-Lin Wu</a></li>
+<ol class="people">
+<li class="person" id="artist-katsur">
+<h3><span class="plate" style="--r: -1.1deg">Anna Katsur</span></h3>
+<div>
+<p>Thresholds opening onto further thresholds, empty roads, a single palm against a blue sky. These places are built from memory.</p>
+<p class="at">At stations <a href="#station-2">02</a> <a href="#station-3">03</a> <a href="#station-5">05</a></p>
+<details class="all cv">
+<summary><span class="plate">Exhibitions</span> <span class="count">12</span></summary>
+<ul class="ex">
+<li><span class="yr">2026</span><span class="ex-t">The Route Forward, with Inessa Garder<span class="ex-p">, Hackney Downs Studios, London</span></span></li>
+<li><span class="yr">2026</span><span class="ex-t">Soho Open<span class="ex-p">, GPS Gallery, Soho, London</span></span></li>
+<li><span class="yr">2026</span><span class="ex-t">77th Annual Summer Exhibition<span class="ex-p">, Chelsea Art Society, London</span></span></li>
+<li><span class="yr">2026</span><span class="ex-t">Huge Gallery<span class="ex-p">, London</span></span></li>
+<li><span class="yr">2024</span><span class="ex-t"><a href="https://who-am-i-show.art/"><em>Who Am I?</em></a>, international exhibition (<a href="https://cucumbermag.art/who-am-i-among-others/">review</a>)<span class="ex-p">, Hackney Wick, London</span></span></li>
+<li><span class="yr">2023</span><span class="ex-t">The Wrong Biennale<span class="ex-p">, Barcelona</span></span></li>
+<li><span class="yr">2023</span><span class="ex-t">Contemporary Artists, Future rGo Summit<span class="ex-p">, Istanbul</span></span></li>
+<li><span class="yr">2023</span><span class="ex-t">Awakening<span class="ex-p">, Yerevan</span></span></li>
+<li><span class="yr">2023</span><span class="ex-t">Illusory<span class="ex-p">, Belgrade</span></span></li>
+<li><span class="yr">2019</span><span class="ex-t">Installation for the Golden Mask theatre season<span class="ex-p">, Moscow</span></span></li>
+<li><span class="yr">2010</span><span class="ex-t">Art of the Future<span class="ex-p">, Zelenograd Cultural Centre, Moscow</span></span></li>
+<li><span class="yr">2009</span><span class="ex-t">New Watercolour<span class="ex-p">, Kirov City Library, Kirov</span></span></li>
 </ul>
+</details>
+</div>
+</li>
+<li class="person" id="artist-garder">
+<h3><span class="plate" style="--r: 0.9deg">Inessa Garder</span></h3>
+<div>
+<p>Night rivers, bridges and reflections in constant movement. Each painting holds a moment of transition.</p>
+<p class="at">At stations <a href="#station-1">01</a> <a href="#station-4">04</a> <a href="#station-7">07</a></p>
+<details class="all cv">
+<summary><span class="plate">Exhibitions</span> <span class="count">13</span></summary>
+<ul class="ex">
+<li><span class="yr">2026</span><span class="ex-t">The Route Forward, with Anna Katsur<span class="ex-p">, Hackney Downs Studios, London</span></span></li>
+<li><span class="yr">2026</span><span class="ex-t">CREA Open 2026, finalist (24 selected from 4,021 submissions)<span class="ex-p">, Venice</span></span></li>
+<li><span class="yr">2025</span><span class="ex-t">Baku Art Weekend<span class="ex-p">, Heydar Aliyev Center, Baku</span></span></li>
+<li><span class="yr">2025</span><span class="ex-t">Commissioned artwork for Kriya Yoga Masters<span class="ex-p">, Rishikesh, India</span></span></li>
+<li><span class="yr">2024</span><span class="ex-t"><a href="https://who-am-i-show.art/"><em>Who Am I?</em></a>, international exhibition<span class="ex-p">, Hackney Wick, London</span></span></li>
+<li><span class="yr">2024</span><span class="ex-t">The Big Art Show<span class="ex-p">, Paisley, Scotland</span></span></li>
+<li><span class="yr">2023</span><span class="ex-t">Tale of the Highlands, videography and painting collaboration<span class="ex-p">, Scotland</span></span></li>
+<li><span class="yr">2021</span><span class="ex-t">Sacred Love, 35 paintings on water as a sacred space<span class="ex-p">, The Nehru Centre, London, presented by the Indian Council for Cultural Relations</span></span></li>
+<li><span class="yr">2020</span><span class="ex-t">Open Arts Fest, Sant Sewa Ashram<span class="ex-p">, Rishikesh, India</span></span></li>
+<li><span class="yr">2019</span><span class="ex-t">International Film &amp; Art Festival<span class="ex-p">, Rishikesh, India</span></span></li>
+<li><span class="yr">2017</span><span class="ex-t">Tribe 17 International Arts Festival<span class="ex-p">, Oxo Tower Wharf, London</span></span></li>
+<li><span class="yr">2016</span><span class="ex-t">Londoner’s Compass<span class="ex-p">, Strand Gallery, London</span></span></li>
+<li><span class="yr">2016</span><span class="ex-t">Tribe 16, international group exhibition<span class="ex-p">, Ugly Duck, London</span></span></li>
+</ul>
+</details>
+</div>
+</li>
+<li class="person" id="artist-mukhametkulova">
+<h3><span class="plate" style="--r: -0.6deg">Karina Mukhametkulova</span></h3>
+<div>
+<p>Karina Mukhametkulova is a London-based artist working in oil, bringing real objects and materials into saturated painted spaces.</p>
+<p>Her work begins with the sense that the ordinary has another layer, always present and easy to miss. A space changes whoever is inside it; whoever notices it changes the space in return. She is drawn to that moment of noticing – something that, once seen, cannot be unseen – and to the stillness of a moment already slipping away. The real objects in her paintings mark where the two layers touch.</p>
+<p class="at">At stations <a href="#station-6">06</a> <a href="#station-7">07</a></p>
+
+</div>
+</li>
+<li class="person" id="artist-klimova">
+<h3><span class="plate" style="--r: 1.0deg">Anastasia Klimova</span></h3>
+<div>
+
+<p class="at">At station <a href="#station-4">04</a></p>
+
+</div>
+</li>
+<li class="person" id="artist-wu">
+<h3><span class="plate" style="--r: -0.9deg">Chieh-Lin Wu</span></h3>
+<div>
+
+<p class="at">At stations <a href="#station-1">01</a> <a href="#station-3">03</a></p>
+
+</div>
+</li>
+<li class="person" id="artist-savina">
+<h3><span class="plate" style="--r: 0.7deg">Anna Savina</span></h3>
+<div>
+
+<p class="at">At station <a href="#station-3">03</a></p>
+
+</div>
+</li>
+</ol>
 <p class="curator"><span class="plate">Curated by Nataliya Stassenko</span></p>
 </section>
 
 <section class="works" id="works">
-<p class="label"><span class="plate" style="--r: -0.9deg">Artworks</span></p>
+<p class="label"><span class="plate" style="--r: -0.9deg">Artworks by station</span></p>
+<p class="st-intro">In the gallery the works hang in seven stations along one corridor. There is no fixed route: start anywhere, follow the stations in any order and come back to the ones you have already seen.</p>
+<nav class="st-index" aria-label="Stations"><a href="#station-1"><b>01</b> Before the Road</a><a href="#station-2"><b>02</b> The Threshold</a><a href="#station-3"><b>03</b> Unfamiliar Waters</a><a href="#station-4"><b>04</b> Companions</a><a href="#station-5"><b>05</b> Somewhere Along the Way</a><a href="#station-6"><b>06</b> Expected</a><a href="#station-7"><b>07</b> The Traveller, Changed</a></nav>
 
-<article class="group lead" id="works-katsur">
+<article class="station" id="station-1">
 <header>
-<h3>Anna Katsur<span>Constructed memory</span></h3>
+<p class="st-no" aria-hidden="true">01</p>
 <div>
-<p>Thresholds opening onto further thresholds, empty roads, a single palm against a blue sky. These places are built from memory.</p>
-<p class="more-link"><a href="#katsur">About the artist</a></p>
+<p class="st-k">Station 1 of 7</p>
+<h3><span class="plate" style="--r: -1.2deg">Before the Road</span></h3>
+<p>A path often begins long before anyone sets out on it. It shows first as a shift in the light, or a restlessness that has no object yet, a sense that the present arrangement of things will not hold much longer. The traveller is still standing still, and the road is already under way somewhere ahead of her.</p><p class="ps">Keep this water in mind. The same river waits at the end of the corridor.</p>
 </div>
 </header>
-<figure class="work cover">
-<button class="thumb" type="button" data-full="img/a-path3.jpg" data-title="Path 3" data-meta="Anna Katsur, oil on canvas, 152 × 101 cm, 2026" aria-label="View Path 3 larger"><img src="img/a-path3.jpg" alt="Path 3: red and white buildings, three palms and an empty road under a deep blue sky, crossed by red lines" loading="lazy" width="1600" height="1060"></button>
-<figcaption><span class="plate">Path 3</span> <span class="size">152 × 101 cm</span></figcaption>
+<div class="st-works">
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/i-transition.jpg" data-title="Transition II" data-meta="Inessa Garder, acrylic on canvas with gold and silver leaf, 90 × 60 cm, 2020" aria-label="View Transition II larger"><img src="img/i-transition.jpg" alt="Transition II: a surface of teal and green water in slow movement" loading="lazy" width="1600" height="1061"></button>
+<figcaption><span class="plate">Transition II</span> <span class="size">90 × 60 cm</span></figcaption>
+<p class="by"><a href="#artist-garder">Inessa Garder</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
+<div class="txt">
+<p class="meta">Acrylic on canvas with gold and silver leaf · 90 × 60 cm · 2020, India</p>
+<p>After meditating, Inessa watched the waters of the Ganges flow. When she fixed her gaze on the currents, their pattern seemed to stand still, and the water carried her into other worlds. She painted that moment.</p>
+<p>Transition II shows the Ganges at twilight, when shapes shift and grow uncertain. The goddess Ganga puts on a gown of deep emerald green and recites her flowing mantra, carrying the world into night so that it may be purified and reborn.</p>
+<p>Each experience is fleeting and cannot be repeated, which makes every moment precious.</p>
+</div>
+</details>
 </figure>
-<details class="all">
-<summary><span class="plate">All works by Anna Katsur</span> <span class="count">5</span></summary>
-<ol class="pieces">
-<li class="piece">
-<button class="thumb" type="button" data-full="img/a-path3.jpg" data-title="Path 3" data-meta="Anna Katsur, oil on canvas, 152 × 101 cm, 2026" aria-label="View Path 3 larger"><img src="img/a-path3.jpg" alt="Path 3: red and white buildings, three palms and an empty road under a deep blue sky, crossed by red lines" loading="lazy" width="1600" height="1060"></button>
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/w-beyond.jpg" data-title="Beyond" data-meta="Chieh-Lin Wu, photographic print, 50 × 50 cm" aria-label="View Beyond larger"><img src="img/w-beyond.jpg" alt="Beyond: a black and white photograph of a thistle in front of dark mountains, light breaking through heavy clouds" loading="lazy" width="1600" height="1600"></button>
+<figcaption><span class="plate">Beyond</span> <span class="size">50 × 50 cm</span></figcaption>
+<p class="by"><a href="#artist-wu">Chieh-Lin Wu</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
 <div class="txt">
-<h4>Path 3</h4>
-<p class="meta">Oil on canvas · 152 × 101 cm · 2026</p>
-<p>At first glance, the landscape seems almost perfect: a vivid blue sky, palm trees and sunlit architecture. Nothing is happening, and nothing suggests any immediate danger.</p>
-<p>Yet the red lines cutting across the space disturb this sense of calm. They suggest an anxiety that can exist even when there seems to be no reason for it.</p>
-<p>Path 3 explores the tension between outward well-being and an inner sense of threat. The world may look beautiful, life may seem settled, and the future predictable. None of this guarantees a feeling of safety.</p>
-<p>Sometimes anxiety is barely noticeable. It does not destroy the beautiful picture; it simply becomes part of it.</p>
+<p class="meta">Photographic print in a black frame · 50 × 50 cm</p>
+<p>The work explores the emotional tension between longing for the future and the uncertainty of what lies ahead. A distant light breaks through the heavy clouds, briefly illuminating the mountains beyond. It offers a glimpse of something beyond the present, something that can be imagined but not yet reached or understood.</p>
+<p>The solitary flower in the foreground stands within the vast and shadowed landscape, suggesting a quiet sense of vulnerability and resilience. It reflects the experience of being rooted in the present while looking towards an uncertain future. Rather than presenting a clear destination or a promise of what is to come, the image holds a space between anticipation and apprehension, where the desire for change exists alongside the fear of the unknown.</p>
 </div>
-</li>
-<li class="piece">
-<button class="thumb" type="button" data-full="img/a-path5.jpg" data-title="Path 5" data-meta="Anna Katsur, oil on canvas, 90 × 120 cm, 2026" aria-label="View Path 5 larger"><img src="img/a-path5.jpg" alt="Path 5: a red room opening onto a palm, a white house and the sea" loading="lazy" width="1200" height="1600"></button>
-<div class="txt">
-<h4>Path 5</h4>
-<p class="meta">Oil on canvas · 90 × 120 cm · 2026</p>
-<p>Through a dark red opening, like a window, we see a bright blue sky, a palm tree and sunlit architecture. This peaceful landscape stands in sharp contrast to the enclosed space from which we view it.</p>
-<p>Path 5 is about a state of mind in which the present feels like nothing more than a temporary stage on the way to a better life.</p>
-<p>Anxiety keeps our attention fixed on what lies ahead. We tell ourselves that everything will change once we reach the next goal, move somewhere else or get through a difficult period.</p>
-<p>The image of a beautiful future helps us keep going, but it can also prevent us from noticing the life we are living here and now.</p>
-<p>We can see the promise of peace, but we remain on this side of the window.</p>
+</details>
+</figure>
 </div>
-</li>
-<li class="piece">
+</article>
+
+<article class="station" id="station-2">
+<header>
+<p class="st-no" aria-hidden="true">02</p>
+<div>
+<p class="st-k">Station 2 of 7</p>
+<h3><span class="plate" style="--r: 0.9deg">The Threshold</span></h3>
+<p>This painting belongs with the one on the opposite wall. Here, a window opens onto a landscape lit so brightly that the room you stand in begins to feel provisional. Across the corridor, doors open onto further doors with no final room. Between them, the future is something you can already picture but cannot yet enter, and picturing it changes what it feels like to stay where you are.</p>
+</div>
+</header>
+<div class="st-works">
+<figure class="st-work">
 <button class="thumb" type="button" data-full="img/a-path6.jpg" data-title="Path 6" data-meta="Anna Katsur, oil on canvas, 90 × 120 cm, 2026" aria-label="View Path 6 larger"><img src="img/a-path6.jpg" alt="Path 6: a red staircase climbing through a sequence of receding doorways" loading="lazy" width="1200" height="1600"></button>
+<figcaption><span class="plate">Path 6</span> <span class="size">90 × 120 cm</span></figcaption>
+<p class="by"><a href="#artist-katsur">Anna Katsur</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
 <div class="txt">
-<h4>Path 6</h4>
 <p class="meta">Oil on canvas · 90 × 120 cm · 2026</p>
 <p>A sequence of doorways recedes into the distance. Each opening is smaller than the last, and at the far end lies a distant, almost unreachable point.</p>
 <p>We are used to thinking of life as a journey towards a particular goal. It can feel as though lasting happiness, clarity or peace is waiting beyond the next door.</p>
@@ -622,159 +762,43 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 <p>Path 6 invites us to reconsider the idea of arrival. If every journey has a final destination, then for human life that destination is death.</p>
 <p>Perhaps meaning lies not in finally arriving somewhere, but in what happens to us along the way.</p>
 </div>
-</li>
-<li class="piece">
-<button class="thumb" type="button" data-full="img/a-uprooted.jpg" data-title="Uprooted" data-meta="Anna Katsur, oil on canvas, 60 × 40 cm, 2026" aria-label="View Uprooted larger"><img src="img/a-uprooted.jpg" alt="Uprooted: an orange floor with an empty hole, an overturned blue pot and a trowel; through an open door a small figure walks towards the sea" loading="lazy" width="1600" height="1049"></button>
-<div class="txt">
-<h4>Uprooted</h4>
-<p class="meta">Oil on canvas · 60 × 40 cm · 2026</p>
-<p>In an empty room, two paths are possible. One leads down into the earth, where a hole has been prepared for a plant. The other leads through an open door towards the sea, where a small human figure is walking away.</p>
-<p>An empty flowerpot leaves a question unanswered: has nothing been planted here yet, or has something already been dug up?</p>
-<p>Putting down roots is usually seen as a good thing. We are expected to find our place, build a home, grow something and stay. But what happens when the place where we are expected to grow no longer feels right?</p>
-<p>Uprooted is about the right not to put down roots. About the freedom to leave behind even something we have invested a great deal in. Sometimes moving forward begins with the decision not to stay.</p>
-</div>
-</li>
-<li class="piece">
-<button class="thumb" type="button" data-full="img/a-heatwave.jpg" data-title="Heatwave" data-meta="Anna Katsur, oil on canvas, 40 × 40 cm, 2026" aria-label="View Heatwave larger"><img src="img/a-heatwave.jpg" alt="Heatwave: a living room flooded with orange light, a figure sitting still in a red armchair beside a fan" loading="lazy" width="1600" height="1600"></button>
-<div class="txt">
-<h4>Heatwave</h4>
-<p class="meta">Oil on canvas · 40 × 40 cm · 2026</p>
-<p>A bright room is flooded with orange light. A person sits motionless in an armchair. A fan stands nearby, though it is unclear whether it can still help.</p>
-<p>Every summer, extreme heat claims lives, particularly among older people who live alone. These deaths often happen quietly, behind closed doors, almost unnoticed by the outside world.</p>
-<p>But Heatwave is not only about climate. It is also about how people gradually become accustomed to unbearable conditions. What once seemed extraordinary becomes part of everyday life. We adapt, carry on, and sometimes stop noticing how dangerous our familiar surroundings have become.</p>
-<p>There is no visible catastrophe in this painting. Perhaps that is precisely why it is already happening.</p>
-</div>
-</li>
-</ol>
 </details>
-</article>
-
-<article class="group lead" id="works-garder">
-<header>
-<h3>Inessa Garder<span>Fluid crossings</span></h3>
-<div>
-<p>Night rivers, bridges and reflections in constant movement. Each painting holds a moment of transition.</p>
-<p class="more-link"><a href="#garder">About the artist</a></p>
-</div>
-</header>
-<figure class="work cover">
-<button class="thumb" type="button" data-full="img/i-currents.jpg" data-title="Emotional Currents" data-meta="Inessa Garder, acrylic on canvas with gold leaf, 100 × 75 cm, 2019" aria-label="View Emotional Currents larger"><img src="img/i-currents.jpg" alt="Emotional Currents: violet water carrying broken reflections of city lights" loading="lazy" width="1600" height="1195"></button>
-<figcaption><span class="plate">Emotional Currents</span> <span class="size">100 × 75 cm</span></figcaption>
 </figure>
-<details class="all">
-<summary><span class="plate">All works by Inessa Garder</span> <span class="count">4</span></summary>
-<ol class="pieces">
-<li class="piece">
-<button class="thumb" type="button" data-full="img/i-currents.jpg" data-title="Emotional Currents" data-meta="Inessa Garder, acrylic on canvas with gold leaf, 100 × 75 cm, 2019" aria-label="View Emotional Currents larger"><img src="img/i-currents.jpg" alt="Emotional Currents: violet water carrying broken reflections of city lights" loading="lazy" width="1600" height="1195"></button>
-<div class="txt">
-<h4>Emotional Currents</h4>
-<p class="meta">Acrylic on canvas with gold leaf · 100 × 75 cm · 2019, India</p>
-<p>Emotional Currents was inspired by the reflection of Ram Jhula bridge in the waters of the Ganges at around 8 pm, when the currents take on shades of purple and gold.</p>
-<p>The currents distort the bridge’s reflection into an almost abstract image on the surface of the holy river. Light mingles with the water and holds the colours of the sky after sunset. The painting follows one idea through the currents of different emotions, and through how much in the world remains unspoken and undiscovered.</p>
-</div>
-</li>
-<li class="piece">
-<button class="thumb" type="button" data-full="img/i-breakthrough.jpg" data-title="Our Breakthrough" data-meta="Inessa Garder, acrylic on canvas with gold and silver leaf, 90 × 60 cm, 2019" aria-label="View Our Breakthrough larger"><img src="img/i-breakthrough.jpg" alt="Our Breakthrough: two figures crossing a suspension bridge at night toward a bright light" loading="lazy" width="1600" height="1066"></button>
-<div class="txt">
-<h4>Our Breakthrough</h4>
-<p class="meta">Acrylic on canvas with gold and silver leaf · 90 × 60 cm · 2019, India</p>
-<p>Laxman Jhula is a bridge over the rushing waters of the Ganges. It is said that every thought or desire is amplified a hundredfold as you cross it, and that you reach the other side as someone new.</p>
-<p>The painting began on a rainy evening, as Inessa was walking across the bridge. Her thought took a simple form: it is possible to find the true path in life, and it is possible to walk it together.</p>
-</div>
-</li>
-<li class="piece">
-<button class="thumb" type="button" data-full="img/i-decision.jpg" data-title="Decision" data-meta="Inessa Garder, acrylic on canvas with gold leaf, 90 × 75 cm, 2019" aria-label="View Decision larger"><img src="img/i-decision.jpg" alt="Decision: indigo and violet light dissolving into water" loading="lazy" width="1600" height="1321"></button>
-<div class="txt">
-<h4>Decision</h4>
-<p class="meta">Acrylic on canvas with gold leaf · 90 × 75 cm · 2019, India</p>
-<p>Decision was inspired by the illuminated Laxman Jhula bridge over the Ganges on a stormy night.</p>
-<p>The painting is about the moment of decision: a single choice that divides a life into a before and an after.</p>
-</div>
-</li>
-<li class="piece">
-<button class="thumb" type="button" data-full="img/i-transition.jpg" data-title="Transition II" data-meta="Inessa Garder, acrylic on canvas with gold and silver leaf, 90 × 60 cm, 2020" aria-label="View Transition II larger"><img src="img/i-transition.jpg" alt="Transition II: a surface of teal and green water in slow movement" loading="lazy" width="1600" height="1061"></button>
-<div class="txt">
-<h4>Transition II</h4>
-<p class="meta">Acrylic on canvas with gold and silver leaf · 90 × 60 cm · 2020, India</p>
-<p>After meditating, Inessa watched the waters of the Ganges flow. When she fixed her gaze on the currents, their pattern seemed to stand still, and the water carried her into other worlds. She painted that moment.</p>
-<p>Transition II shows the Ganges at twilight, when shapes shift and grow uncertain. The goddess Ganga puts on a gown of deep emerald green and recites her flowing mantra, carrying the world into night so that it may be purified and reborn.</p>
-<p>Each experience is fleeting and cannot be repeated, which makes every moment precious.</p>
-</div>
-</li>
-</ol>
-</details>
-</article>
-
-<div class="also">
-<p class="label"><span class="plate" style="--r: 0.7deg">Also in the exhibition</span></p>
-<div class="cards">
-
-<article class="card" id="works-klimova">
-<h3>Anastasia Klimova</h3>
-<figure class="work">
-<button class="thumb" type="button" data-full="img/k-trace.jpg" data-title="Trace of Being" data-meta="Anastasia Klimova, 100 × 120 cm, 2026" aria-label="View Trace of Being larger"><img src="img/k-trace.jpg" alt="Trace of Being: dissolving blue and grey human silhouettes standing side by side in layered paint" loading="lazy" width="1328" height="1600"></button>
-<figcaption><span class="plate">Trace of Being</span> <span class="size">100 × 120 cm</span></figcaption>
-</figure>
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/a-path5.jpg" data-title="Path 5" data-meta="Anna Katsur, oil on canvas, 90 × 120 cm, 2026" aria-label="View Path 5 larger"><img src="img/a-path5.jpg" alt="Path 5: a red room opening onto a palm, a white house and the sea" loading="lazy" width="1200" height="1600"></button>
+<figcaption><span class="plate">Path 5</span> <span class="size">90 × 120 cm</span></figcaption>
+<p class="by"><a href="#artist-katsur">Anna Katsur</a></p>
 <details class="about-work">
 <summary><span class="plate">About the work</span></summary>
 <div class="txt">
-<p class="meta">Stretched onto a frame · 100 × 120 cm · 2026, Thailand</p>
-<p>Trace of Being reflects human presence as something that exists beyond fixed form. Through dissolving silhouettes and layered surfaces, the work evokes existence as a continuous unfolding rather than a defined state. The figures appear suspended between emergence and disappearance, suggesting the fragile continuity of being across time. What remains is not the individual form itself, but the trace of existence: a quiet imprint shaped through living, perceiving and coexisting.</p>
+<p class="meta">Oil on canvas · 90 × 120 cm · 2026</p>
+<p>Through a dark red opening, like a window, we see a bright blue sky, a palm tree and sunlit architecture. This peaceful landscape stands in sharp contrast to the enclosed space from which we view it.</p>
+<p>Path 5 is about a state of mind in which the present feels like nothing more than a temporary stage on the way to a better life.</p>
+<p>Anxiety keeps our attention fixed on what lies ahead. We tell ourselves that everything will change once we reach the next goal, move somewhere else or get through a difficult period.</p>
+<p>The image of a beautiful future helps us keep going, but it can also prevent us from noticing the life we are living here and now.</p>
+<p>We can see the promise of peace, but we remain on this side of the window.</p>
 </div>
 </details>
-</article>
-
-<article class="card" id="works-wu">
-<h3>Chieh-Lin Wu</h3>
-<figure class="work">
-<button class="thumb" type="button" data-full="img/w-uncertain.jpg" data-title="Uncertain Ground" data-meta="Chieh-Lin Wu, photographic print, 50 × 50 cm" aria-label="View Uncertain Ground larger"><img src="img/w-uncertain.jpg" alt="Uncertain Ground: a black and white photograph of a round stone tower with a staircase, standing in the middle of a lake" loading="lazy" width="1600" height="1600"></button>
-<figcaption><span class="plate">Uncertain Ground</span> <span class="size">50 × 50 cm</span></figcaption>
 </figure>
-<details class="all">
-<summary><span class="plate">Both works</span> <span class="count">2</span></summary>
-<ol class="pieces compact">
-<li class="piece">
-<button class="thumb" type="button" data-full="img/w-uncertain.jpg" data-title="Uncertain Ground" data-meta="Chieh-Lin Wu, photographic print, 50 × 50 cm" aria-label="View Uncertain Ground larger"><img src="img/w-uncertain.jpg" alt="Uncertain Ground: a stone tower with a staircase standing in a lake" loading="lazy" width="1600" height="1600"></button>
-<div class="txt">
-<h4>Uncertain Ground</h4>
-<p class="meta">Photographic print in a black frame · 50 × 50 cm</p>
-<p>The tower once stood firmly on land, rooted in a familiar place. By relocating it to the middle of the lake, its original sense of stability is disrupted. It now occupies an unfamiliar position, suspended between what was once known and what remains uncertain. Its peak appears to align with the distant mountains, creating an almost illusory connection between the structure and the landscape beyond. It suggests an imagined direction, a vision of what life might become, though its destination remains unclear.</p>
-<p>The staircase extends towards the water, offering a possible way forward while simultaneously leading into an unknown depth. The image reflects a state of transition: a moment in which the familiar has been left behind, but the future has yet to take shape. It is neither entirely lost nor fully arrived, but exists somewhere in between.</p>
 </div>
-</li>
-<li class="piece">
-<button class="thumb" type="button" data-full="img/w-beyond.jpg" data-title="Beyond" data-meta="Chieh-Lin Wu, photographic print, 50 × 50 cm" aria-label="View Beyond larger"><img src="img/w-beyond.jpg" alt="Beyond: a black and white photograph of a thistle in front of dark mountains, light breaking through heavy clouds" loading="lazy" width="1600" height="1600"></button>
-<div class="txt">
-<h4>Beyond</h4>
-<p class="meta">Photographic print in a black frame · 50 × 50 cm</p>
-<p>The work explores the emotional tension between longing for the future and the uncertainty of what lies ahead. A distant light breaks through the heavy clouds, briefly illuminating the mountains beyond. It offers a glimpse of something beyond the present, something that can be imagined but not yet reached or understood.</p>
-<p>The solitary flower in the foreground stands within the vast and shadowed landscape, suggesting a quiet sense of vulnerability and resilience. It reflects the experience of being rooted in the present while looking towards an uncertain future. Rather than presenting a clear destination or a promise of what is to come, the image holds a space between anticipation and apprehension, where the desire for change exists alongside the fear of the unknown.</p>
-</div>
-</li>
-</ol>
-</details>
 </article>
 
-<article class="card" id="works-savina">
-<h3>Anna Savina</h3>
-<figure class="work">
+<article class="station" id="station-3">
+<header>
+<p class="st-no" aria-hidden="true">03</p>
+<div>
+<p class="st-k">Station 3 of 7</p>
+<h3><span class="plate" style="--r: -0.7deg">Unfamiliar Waters</span></h3>
+<p>Once you are on the way, the map you set out with stops matching the ground. Familiar landmarks appear in unfamiliar settings, and colours that once held their shape begin to drift. On the wall behind you, the temperature rises. Change rarely arrives all at once. It accumulates by degrees, and by the time we notice it, we have usually been living inside it for some while.</p>
+</div>
+</header>
+<div class="st-works">
+<figure class="st-work">
 <button class="thumb" type="button" data-full="img/s-take.jpg" data-title="Take me with you" data-meta="Anna Savina, alcohol ink on paper, 35 × 45 cm, 2023" aria-label="View Take me with you larger"><img src="img/s-take.jpg" alt="Take me with you: layers of yellow and olive alcohol ink running down the paper" loading="lazy" width="1213" height="1600"></button>
-<figcaption><span class="plate">Take me with you</span> <span class="size">35 × 45 cm</span></figcaption>
-</figure>
-<p class="meta">Alcohol ink on paper · 35 × 45 cm · 2023, Düsseldorf</p>
-</article>
-
-<article class="card" id="works-mukhametkulova">
-<h3>Karina Mukhametkulova</h3>
-<figure class="work">
-<button class="thumb" type="button" data-full="img/km-expected.jpg" data-title="Expected" data-meta="Karina Mukhametkulova, oil and found door knocker on canvas, 70 × 100 cm, 2026" aria-label="View Expected larger"><img src="img/km-expected.jpg" alt="Expected: a real brass door knocker shaped like a hand, fixed to the centre of a padded magenta space" loading="lazy" width="1600" height="1122"></button>
-<figcaption><span class="plate">Expected</span> <span class="size">70 × 100 cm</span></figcaption>
-</figure>
-<details class="all">
-<summary><span class="plate">Both works</span> <span class="count">2</span></summary>
-<ol class="pieces compact">
-<li class="piece">
-<button class="thumb" type="button" data-full="img/km-expected.jpg" data-title="Expected" data-meta="Karina Mukhametkulova, oil and found door knocker on canvas, 70 × 100 cm, 2026" aria-label="View Expected larger"><img src="img/km-expected.jpg" alt="Expected: a real brass door knocker shaped like a hand, fixed to the centre of a padded magenta space" loading="lazy" width="1600" height="1122"></button>
+<figcaption><span class="plate">Take me with you</span> <span class="size">70 × 100 cm</span></figcaption>
+<p class="by"><a href="#artist-savina">Anna Savina</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
 <div class="txt">
 <h4>Expected</h4>
 <p class="meta">Oil and found door knocker on canvas · 70 × 100 cm · 2026</p>
@@ -782,22 +806,214 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 <p>The knocker is old and handmade; the painting is new. Only one of them was made for a door.</p>
 <p>A painting lets you see in without asking. The knocker asks anyway.</p>
 </div>
-</li>
-<li class="piece">
-<button class="thumb" type="button" data-full="img/km-usedto.jpg" data-title="Used To" data-meta="Karina Mukhametkulova, oil, acrylic gel and lace on canvas, 50 × 70 cm, 2026" aria-label="View Used To larger"><img src="img/km-usedto.jpg" alt="Used To: an empty blue room with an orange floor; blue-dyed lace grows from the canvas and white lace hangs over its edge" loading="lazy" width="1500" height="1600"></button>
+</details>
+</figure>
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/w-uncertain.jpg" data-title="Uncertain Ground" data-meta="Chieh-Lin Wu, photographic print, 50 × 50 cm" aria-label="View Uncertain Ground larger"><img src="img/w-uncertain.jpg" alt="Uncertain Ground: a stone tower with a staircase standing in a lake" loading="lazy" width="1600" height="1600"></button>
+<figcaption><span class="plate">Uncertain Ground</span> <span class="size">50 × 50 cm</span></figcaption>
+<p class="by"><a href="#artist-wu">Chieh-Lin Wu</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
 <div class="txt">
-<h4>Used To</h4>
+<p class="meta">Photographic print in a black frame · 50 × 50 cm</p>
+<p>The tower once stood firmly on land, rooted in a familiar place. By relocating it to the middle of the lake, its original sense of stability is disrupted. It now occupies an unfamiliar position, suspended between what was once known and what remains uncertain. Its peak appears to align with the distant mountains, creating an almost illusory connection between the structure and the landscape beyond. It suggests an imagined direction, a vision of what life might become, though its destination remains unclear.</p>
+<p>The staircase extends towards the water, offering a possible way forward while simultaneously leading into an unknown depth. The image reflects a state of transition: a moment in which the familiar has been left behind, but the future has yet to take shape. It is neither entirely lost nor fully arrived, but exists somewhere in between.</p>
+</div>
+</details>
+</figure>
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/a-heatwave.jpg" data-title="Heatwave" data-meta="Anna Katsur, oil on canvas, 40 × 40 cm, 2026" aria-label="View Heatwave larger"><img src="img/a-heatwave.jpg" alt="Heatwave: a living room flooded with orange light, a figure sitting still in a red armchair beside a fan" loading="lazy" width="1600" height="1600"></button>
+<figcaption><span class="plate">Heatwave</span> <span class="size">40 × 40 cm</span></figcaption>
+<p class="by"><a href="#artist-katsur">Anna Katsur</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
+<div class="txt">
+<p class="meta">Oil on canvas · 40 × 40 cm · 2026</p>
+<p>A bright room is flooded with orange light. A person sits motionless in an armchair. A fan stands nearby, though it is unclear whether it can still help.</p>
+<p>Every summer, extreme heat claims lives, particularly among older people who live alone. These deaths often happen quietly, behind closed doors, almost unnoticed by the outside world.</p>
+<p>But Heatwave is not only about climate. It is also about how people gradually become accustomed to unbearable conditions. What once seemed extraordinary becomes part of everyday life. We adapt, carry on, and sometimes stop noticing how dangerous our familiar surroundings have become.</p>
+<p>There is no visible catastrophe in this painting. Perhaps that is precisely why it is already happening.</p>
+</div>
+</details>
+</figure>
+</div>
+</article>
+
+<article class="station" id="station-4">
+<header>
+<p class="st-no" aria-hidden="true">04</p>
+<div>
+<p class="st-k">Station 4 of 7</p>
+<h3><span class="plate" style="--r: 1.1deg">Companions</span></h3>
+<p>We tend to imagine the traveller alone, but most roads are walked beside someone. People pass through us and leave something behind, as the figures on this wall pass into one another. On the opposite wall, two people are crossing a bridge together. It is often in someone else’s company that we first see how far we have already come.</p>
+</div>
+</header>
+<div class="st-works">
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/k-trace.jpg" data-title="Trace of Being" data-meta="Anastasia Klimova, 100 × 120 cm, 2026" aria-label="View Trace of Being larger"><img src="img/k-trace.jpg" alt="Trace of Being: dissolving blue and grey human silhouettes standing side by side in layered paint" loading="lazy" width="1328" height="1600"></button>
+<figcaption><span class="plate">Trace of Being</span> <span class="size">50 × 50 cm</span></figcaption>
+<p class="by"><a href="#artist-klimova">Anastasia Klimova</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
+<div class="txt">
+<h4>Uncertain Ground</h4>
+<p class="meta">Photographic print in a black frame · 50 × 50 cm</p>
+<p>The tower once stood firmly on land, rooted in a familiar place. By relocating it to the middle of the lake, its original sense of stability is disrupted. It now occupies an unfamiliar position, suspended between what was once known and what remains uncertain. Its peak appears to align with the distant mountains, creating an almost illusory connection between the structure and the landscape beyond. It suggests an imagined direction, a vision of what life might become, though its destination remains unclear.</p>
+<p>The staircase extends towards the water, offering a possible way forward while simultaneously leading into an unknown depth. The image reflects a state of transition: a moment in which the familiar has been left behind, but the future has yet to take shape. It is neither entirely lost nor fully arrived, but exists somewhere in between.</p>
+</div>
+</details>
+</figure>
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/i-breakthrough.jpg" data-title="Our Breakthrough" data-meta="Inessa Garder, acrylic on canvas with gold and silver leaf, 90 × 60 cm, 2019" aria-label="View Our Breakthrough larger"><img src="img/i-breakthrough.jpg" alt="Our Breakthrough: two figures crossing a suspension bridge at night toward a bright light" loading="lazy" width="1600" height="1066"></button>
+<figcaption><span class="plate">Our Breakthrough</span> <span class="size">90 × 60 cm</span></figcaption>
+<p class="by"><a href="#artist-garder">Inessa Garder</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
+<div class="txt">
+<p class="meta">Acrylic on canvas with gold and silver leaf · 90 × 60 cm · 2019, India</p>
+<p>Laxman Jhula is a bridge over the rushing waters of the Ganges. It is said that every thought or desire is amplified a hundredfold as you cross it, and that you reach the other side as someone new.</p>
+<p>The painting began on a rainy evening, as Inessa was walking across the bridge. Her thought took a simple form: it is possible to find the true path in life, and it is possible to walk it together.</p>
+</div>
+</details>
+</figure>
+</div>
+</article>
+
+<article class="station" id="station-5">
+<header>
+<p class="st-no" aria-hidden="true">05</p>
+<div>
+<p class="st-k">Station 5 of 7</p>
+<h3><span class="plate" style="--r: -1.0deg">Somewhere Along the Way</span></h3>
+<p>Some places ask us to stay. A room keeps space ready for something to take root, and the figure leaving it walks towards the sea anyway. Further on, you find yourself inside a landscape that seems complete, warm and still, with a fault line running through it. Arrival and rest are easily mistaken for each other. Whether this is the end of the road or a place to gather strength, the painting does not say.</p>
+</div>
+</header>
+<div class="st-works">
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/a-uprooted.jpg" data-title="Uprooted" data-meta="Anna Katsur, oil on canvas, 60 × 40 cm, 2026" aria-label="View Uprooted larger"><img src="img/a-uprooted.jpg" alt="Uprooted: an orange floor with an empty hole, an overturned blue pot and a trowel; through an open door a small figure walks towards the sea" loading="lazy" width="1600" height="1049"></button>
+<figcaption><span class="plate">Uprooted</span> <span class="size">60 × 40 cm</span></figcaption>
+<p class="by"><a href="#artist-katsur">Anna Katsur</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
+<div class="txt">
+<p class="meta">Oil on canvas · 60 × 40 cm · 2026</p>
+<p>In an empty room, two paths are possible. One leads down into the earth, where a hole has been prepared for a plant. The other leads through an open door towards the sea, where a small human figure is walking away.</p>
+<p>An empty flowerpot leaves a question unanswered: has nothing been planted here yet, or has something already been dug up?</p>
+<p>Putting down roots is usually seen as a good thing. We are expected to find our place, build a home, grow something and stay. But what happens when the place where we are expected to grow no longer feels right?</p>
+<p>Uprooted is about the right not to put down roots. About the freedom to leave behind even something we have invested a great deal in. Sometimes moving forward begins with the decision not to stay.</p>
+</div>
+</details>
+</figure>
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/a-path3.jpg" data-title="Path 3" data-meta="Anna Katsur, oil on canvas, 152 × 101 cm, 2026" aria-label="View Path 3 larger"><img src="img/a-path3.jpg" alt="Path 3: red and white buildings, three palms and an empty road under a deep blue sky, crossed by red lines" loading="lazy" width="1600" height="1060"></button>
+<figcaption><span class="plate">Path 3</span> <span class="size">152 × 101 cm</span></figcaption>
+<p class="by"><a href="#artist-katsur">Anna Katsur</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
+<div class="txt">
+<p class="meta">Oil on canvas · 152 × 101 cm · 2026</p>
+<p>At first glance, the landscape seems almost perfect: a vivid blue sky, palm trees and sunlit architecture. Nothing is happening, and nothing suggests any immediate danger.</p>
+<p>Yet the red lines cutting across the space disturb this sense of calm. They suggest an anxiety that can exist even when there seems to be no reason for it.</p>
+<p>Path 3 explores the tension between outward well-being and an inner sense of threat. The world may look beautiful, life may seem settled, and the future predictable. None of this guarantees a feeling of safety.</p>
+<p>Sometimes anxiety is barely noticeable. It does not destroy the beautiful picture; it simply becomes part of it.</p>
+</div>
+</details>
+</figure>
+</div>
+</article>
+
+<article class="station" id="station-6">
+<header>
+<p class="st-no" aria-hidden="true">06</p>
+<div>
+<p class="st-k">Station 6 of 7</p>
+<h3><span class="plate" style="--r: 0.8deg">Expected</span></h3>
+<p>Not every part of a journey involves movement. Some of it happens in place: in noticing what was easy to pass by, or in deciding whether to answer. Here there is a hand ready to knock and no door to knock on. As the path goes on it grows subtler, and asks for attention more than distance. What it means to be expected depends on which side of the door you imagine yourself standing.</p>
+</div>
+</header>
+<div class="st-works one">
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/km-expected.jpg" data-title="Expected" data-meta="Karina Mukhametkulova, oil and found door knocker on canvas, 70 × 100 cm, 2026" aria-label="View Expected larger"><img src="img/km-expected.jpg" alt="Expected: a real brass door knocker shaped like a hand, fixed to the centre of a padded magenta space" loading="lazy" width="1600" height="1122"></button>
+<figcaption><span class="plate">Expected</span> <span class="size">70 × 100 cm</span></figcaption>
+<p class="by"><a href="#artist-mukhametkulova">Karina Mukhametkulova</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
+<div class="txt">
+<p class="meta">Oil and found door knocker on canvas · 70 × 100 cm · 2026</p>
+<p>A brass hand hangs where a door might be. It is the only thing here that agrees with gravity.</p>
+<p>The knocker is old and handmade; the painting is new. Only one of them was made for a door.</p>
+<p>A painting lets you see in without asking. The knocker asks anyway.</p>
+</div>
+</details>
+</figure>
+</div>
+</article>
+
+<article class="station" id="station-7">
+<header>
+<p class="st-no" aria-hidden="true">07</p>
+<div>
+<p class="st-k">Station 7 of 7</p>
+<h3><span class="plate" style="--r: -1.3deg">The Traveller, Changed</span></h3>
+<p>The river from the entrance returns here, at dusk and in violet: the same place, seen after the whole corridor. To the left, a piece of lace that was once a curtain, then a pillowcase, now spills over the edge of a canvas. Each use changed it, and the lace has kept something of each. People change in a similar way. What we pass through settles in us and alters what we are able to see. In the corner hangs a work that visitors take apart, piece by piece, and carry out with them.</p><p class="ps">On your way back, look at the works again. You will see them in reverse order, and probably differently.</p>
+</div>
+</header>
+<div class="st-works">
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/i-currents.jpg" data-title="Emotional Currents" data-meta="Inessa Garder, acrylic on canvas with gold leaf, 100 × 75 cm, 2019" aria-label="View Emotional Currents larger"><img src="img/i-currents.jpg" alt="Emotional Currents: violet water carrying broken reflections of city lights" loading="lazy" width="1600" height="1195"></button>
+<figcaption><span class="plate">Emotional Currents</span> <span class="size">100 × 75 cm</span></figcaption>
+<p class="by"><a href="#artist-garder">Inessa Garder</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
+<div class="txt">
+<p class="meta">Acrylic on canvas with gold leaf · 100 × 75 cm · 2019, India</p>
+<p>Emotional Currents was inspired by the reflection of Ram Jhula bridge in the waters of the Ganges at around 8 pm, when the currents take on shades of purple and gold.</p>
+<p>The currents distort the bridge’s reflection into an almost abstract image on the surface of the holy river. Light mingles with the water and holds the colours of the sky after sunset. The painting follows one idea through the currents of different emotions, and through how much in the world remains unspoken and undiscovered.</p>
+</div>
+</details>
+</figure>
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/i-decision.jpg" data-title="Decision" data-meta="Inessa Garder, acrylic on canvas with gold leaf, 90 × 75 cm, 2019" aria-label="View Decision larger"><img src="img/i-decision.jpg" alt="Decision: indigo and violet light dissolving into water" loading="lazy" width="1600" height="1321"></button>
+<figcaption><span class="plate">Decision</span> <span class="size">90 × 75 cm</span></figcaption>
+<p class="by"><a href="#artist-garder">Inessa Garder</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
+<div class="txt">
+<p class="meta">Acrylic on canvas with gold leaf · 90 × 75 cm · 2019, India</p>
+<p>Decision was inspired by the illuminated Laxman Jhula bridge over the Ganges on a stormy night.</p>
+<p>The painting is about the moment of decision: a single choice that divides a life into a before and an after.</p>
+</div>
+</details>
+</figure>
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/km-usedto.jpg" data-title="Used To" data-meta="Karina Mukhametkulova, oil, acrylic gel and lace on canvas, 50 × 70 cm, 2026" aria-label="View Used To larger"><img src="img/km-usedto.jpg" alt="Used To: an empty blue room with an orange floor; blue-dyed lace grows from the canvas and white lace hangs over its edge" loading="lazy" width="1500" height="1600"></button>
+<figcaption><span class="plate">Used To</span> <span class="size">50 × 70 cm</span></figcaption>
+<p class="by"><a href="#artist-mukhametkulova">Karina Mukhametkulova</a></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
+<div class="txt">
 <p class="meta">Oil, acrylic gel and lace (former curtain, former pillowcase) on canvas · 50 × 70 cm · 2026</p>
 <p>The lace was a curtain first, then a pillowcase. Now, soaked in blue, it slips over the edge of the canvas and into our space. Where it lay, the skin has kept its pattern.</p>
 <p>By now, neither of them remembers being anything else.</p>
 </div>
-</li>
-</ol>
 </details>
+</figure>
+<figure class="st-work">
+<button class="thumb" type="button" data-full="img/km-light.jpg" data-title="Take a Little Light" data-meta="Karina Mukhametkulova, rhinestones and acrylic on plywood, 90 × 120 cm" aria-label="View Take a Little Light larger"><img src="img/km-light.jpg" alt="Take a Little Light: a board covered edge to edge in sheets of coloured rhinestones, hearts, stars, drops and squares" loading="lazy" width="866" height="1125"></button>
+<figcaption><span class="plate">Take a Little Light</span> <span class="size">90 × 120 cm</span></figcaption>
+<p class="by"><a href="#artist-mukhametkulova">Karina Mukhametkulova</a></p><p class="tag"><span class="plate">Interactive: take a crystal</span></p>
+<details class="about-work">
+<summary><span class="plate">About the work</span></summary>
+<div class="txt">
+<p class="meta">Rhinestones and acrylic on plywood · 90 × 120 cm · Interactive</p>
+<p>The surface is covered in sheets of rhinestones: hearts, stars, drops, moons and squares. This work is meant to be taken apart.</p>
+<p>Peel off a crystal and wear it on your face, your hands or your clothes, then carry it out with you. As the crystals go, the painting underneath appears.</p>
+<p>Every visitor changes the work a little, and leaves with a small piece of it.</p>
+</div>
+</details>
+</figure>
+</div>
 </article>
-
-</div>
-</div>
 </section>
 
 <section class="visit" id="visit">
@@ -834,43 +1050,6 @@ Scale: 23 days
 </div>
 </section>
 
-<section class="about" id="about">
-<p class="label"><span class="plate" style="--r: -1deg">About the artists</span></p>
-<div class="bios">
-<article class="bio" id="katsur">
-<h3>Anna Katsur</h3>
-<p>Anna Katsur is an artist working in oil painting. Her practice addresses philosophical and socio-political questions of the twenty-first century. She explores control and chance, authorship and intuition, and the role of memory in how a place is seen and remembered.</p>
-<h4>Selected exhibitions</h4>
-<ul class="ex">
-<li><span class="yr">2026</span><span class="ex-t">Soho Open</span><span class="ex-p">GPS Gallery, Soho, London</span></li>
-<li><span class="yr">2026</span><span class="ex-t">77th Annual Summer Exhibition</span><span class="ex-p">Chelsea Art Society, London</span></li>
-<li><span class="yr">2026</span><span class="ex-t">Huge Gallery</span><span class="ex-p">London</span></li>
-<li><span class="yr">2026</span><span class="ex-t">The Route Forward, with Inessa Garder</span><span class="ex-p">Hackney Downs Studios, London</span></li>
-<li><span class="yr">2024</span><span class="ex-t"><a href="https://who-am-i-show.art/"><em>Who Am I?</em></a>, international exhibition (<a href="https://cucumbermag.art/who-am-i-among-others/">review</a>)</span><span class="ex-p">Hackney Wick, London</span></li>
-<li><span class="yr">2023</span><span class="ex-t">The Wrong Biennale</span><span class="ex-p">Barcelona</span></li>
-<li><span class="yr">2023</span><span class="ex-t">Contemporary Artists, Future rGo Summit</span><span class="ex-p">Istanbul</span></li>
-<li><span class="yr">2023</span><span class="ex-t">Awakening</span><span class="ex-p">Yerevan</span></li>
-<li><span class="yr">2023</span><span class="ex-t">Illusory</span><span class="ex-p">Belgrade</span></li>
-<li><span class="yr">2019</span><span class="ex-t">Installation for the Golden Mask theatre season</span><span class="ex-p">Moscow</span></li>
-<li><span class="yr">2010</span><span class="ex-t">Art of the Future</span><span class="ex-p">Zelenograd Cultural Centre, Moscow</span></li>
-<li><span class="yr">2009</span><span class="ex-t">New Watercolour</span><span class="ex-p">Kirov City Library, Kirov</span></li>
-</ul>
-</article>
-<article class="bio" id="garder">
-<h3>Inessa Garder</h3>
-<p>Inessa Garder is a visual artist with a background in architecture. She studied architecture in Milan and continued her education at Central Saint Martins, University of the Arts London. She worked as an architect in Milan, Rome and London, and this research-led, large-scale approach became the foundation of her painting.</p>
-<p>From 2019 to 2022 she lived in Northern India, painting and exhibiting at international art and film festivals. From 2022 to 2024 she lived and worked in the Hackney Wick warehouse community in London, creating immersive community-based projects. Her current practice centres on multi-layered liquid oil painting.</p>
-<h4>Selected exhibitions</h4>
-<ul class="ex">
-<li><span class="yr">2026</span><span class="ex-t">The Route Forward, with Anna Katsur</span><span class="ex-p">Hackney Downs Studios, London</span></li>
-<li><span class="yr">2024</span><span class="ex-t"><a href="https://who-am-i-show.art/"><em>Who Am I?</em></a>, international exhibition, co-curator</span><span class="ex-p">Hackney Wick, London</span></li>
-<li><span class="yr">2021</span><span class="ex-t">Sacred Love, online solo exhibition</span><span class="ex-p">The Nehru Centre and Indian Council for Cultural Relations, London</span></li>
-<li><span class="yr">2019–22</span><span class="ex-t">International art and film festivals</span><span class="ex-p">Northern India</span></li>
-<li><span class="yr">2016–17</span><span class="ex-t">FOCUS LDN and Chrom Art</span><span class="ex-p">London</span></li>
-</ul>
-</article>
-</div>
-</section>
 </main>
 
 <footer>
