@@ -57,9 +57,7 @@ a:hover { color: var(--blue); }
 
 /* heat that follows the cursor on the first screen */
 .hero { overflow: hidden; }
-.heat { position: absolute; left: 0; top: 0; z-index: 2; width: var(--d); height: var(--d); margin: calc(var(--d) / -2) 0 0 calc(var(--d) / -2); border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity 0.6s ease; mix-blend-mode: multiply; will-change: transform; }
-.heat::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, rgba(255, 245, 180, 0.95) 0%, rgba(255, 190, 30, 0.92) 11%, rgba(250, 90, 30, 0.88) 21%, rgba(225, 30, 90, 0.78) 31%, rgba(120, 40, 190, 0.62) 43%, rgba(40, 80, 220, 0.48) 55%, rgba(170, 195, 235, 0.32) 67%, rgba(170, 195, 235, 0) 78%); filter: blur(calc(var(--d) * 0.02)); }
-.heat::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: repeating-radial-gradient(circle, transparent 0, transparent calc(var(--d) * 0.055 - 1px), rgba(20, 20, 20, 0.45) calc(var(--d) * 0.055), transparent calc(var(--d) * 0.055 + 1.2px)); -webkit-mask: radial-gradient(circle, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 72%); mask: radial-gradient(circle, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 72%); }
+.heat { position: absolute; left: 0; top: 0; z-index: 2; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: opacity 0.6s ease; mix-blend-mode: multiply; }
 .hero.warm .heat { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .heat { display: none; } }
 
@@ -529,9 +527,7 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 
 </div>
 </div>
-<div class="heat" aria-hidden="true"></div>
-<div class="heat" aria-hidden="true"></div>
-<div class="heat" aria-hidden="true"></div>
+<canvas class="heat" aria-hidden="true"></canvas>
 </header>
 
 <nav class="nav" aria-label="Sections">
@@ -664,9 +660,8 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 <div class="txt">
 <h4>Emotional Currents</h4>
 <p class="meta">Acrylic on canvas with gold leaf · 100 × 75 cm · 2019, India</p>
-<p class="motto">Follow the initial idea through all the currents of different emotions.</p>
-<p>Emotional Currents was inspired by the reflection of Ram Jhula bridge in the waters of the Ganges at around 8 pm, when the currents take on glorious shades of purple and gold.</p>
-<p>The currents distort the bridge’s reflection, creating an almost abstract image on the surface of the holy river. Light mingles with the water and reflects the colours of the sky after sunset. The sight leaves the viewer with a sense of how much in the world remains unspoken and undiscovered, and how much grandeur and grace it holds.</p>
+<p>Emotional Currents was inspired by the reflection of Ram Jhula bridge in the waters of the Ganges at around 8 pm, when the currents take on shades of purple and gold.</p>
+<p>The currents distort the bridge’s reflection into an almost abstract image on the surface of the holy river. Light mingles with the water and holds the colours of the sky after sunset. The painting follows one idea through the currents of different emotions, and through how much in the world remains unspoken and undiscovered.</p>
 </div>
 </li>
 <li class="piece">
@@ -674,9 +669,8 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 <div class="txt">
 <h4>Our Breakthrough</h4>
 <p class="meta">Acrylic on canvas with gold and silver leaf · 90 × 60 cm · 2019, India</p>
-<p class="motto">Our breakthrough. Is. Inevitable.</p>
-<p>They say the energy on Laxman Jhula, the iconic Indian bridge, is so powerful that every thought or desire is amplified a hundredfold as you walk across it. The bridge stretches over the rushing waters of the Ganges. You reach the other side and emerge as someone new.</p>
-<p>One rainy evening, as I walked across the bridge, my thought, my vision and my dream took this form: ‘It is possible to find the true path in life. And it is possible to walk it together.’</p>
+<p>Laxman Jhula is a bridge over the rushing waters of the Ganges. It is said that every thought or desire is amplified a hundredfold as you cross it, and that you reach the other side as someone new.</p>
+<p>The painting began on a rainy evening, as Inessa was walking across the bridge. Her thought took a simple form: it is possible to find the true path in life, and it is possible to walk it together.</p>
 </div>
 </li>
 <li class="piece">
@@ -684,9 +678,8 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 <div class="txt">
 <h4>Decision</h4>
 <p class="meta">Acrylic on canvas with gold leaf · 90 × 75 cm · 2019, India</p>
-<p class="motto">Declare your decision to the world.</p>
-<p>A single, unprecedented decision has the power to divide your world into a before and an after. The painting was inspired by the illuminated Laxman Jhula bridge over the Ganges on a stormy night.</p>
-<p>You cannot change everything at once. But in an instant, you can make a decision that changes everything. Think about it. How does that possibility make you feel?</p>
+<p>Decision was inspired by the illuminated Laxman Jhula bridge over the Ganges on a stormy night.</p>
+<p>The painting is about the moment of decision: a single choice that divides a life into a before and an after.</p>
 </div>
 </li>
 <li class="piece">
@@ -694,9 +687,9 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 <div class="txt">
 <h4>Transition II</h4>
 <p class="meta">Acrylic on canvas with gold and silver leaf · 90 × 60 cm · 2020, India</p>
-<p>After meditating, I watched the waters of the Ganges flow. When I fixed my gaze on the currents, their pattern seemed to stand still while that particular stretch of water carried my soul into other worlds and dimensions. So I painted it. Now, if you fix your gaze on the painting, your soul can travel to mystical places at the speed of the Himalayan river.</p>
-<p>The fleeting nature of an experience makes each moment of life precious. It cannot be repeated, and it gives you the chance to express, boldly and sincerely, who you are in that moment alone.</p>
-<p>Transition II depicts the Ganges at twilight, when shapes shift and grow uncertain. The goddess Ganga puts on a mysterious gown of deep emerald green and recites her flowing mantra, enchanting the world into the depths of night so that it may be purified and reborn.</p>
+<p>After meditating, Inessa watched the waters of the Ganges flow. When she fixed her gaze on the currents, their pattern seemed to stand still, and the water carried her into other worlds. She painted that moment.</p>
+<p>Transition II shows the Ganges at twilight, when shapes shift and grow uncertain. The goddess Ganga puts on a gown of deep emerald green and recites her flowing mantra, carrying the world into night so that it may be purified and reborn.</p>
+<p>Each experience is fleeting and cannot be repeated, which makes every moment precious.</p>
 </div>
 </li>
 </ol>
@@ -764,17 +757,33 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 
 <article class="card" id="works-mukhametkulova">
 <h3>Karina Mukhametkulova</h3>
-<div class="placeholder" aria-hidden="true"><span>Images to follow</span></div>
-<p class="meta">Two works · 50 × 70 cm and 70 × 100 cm</p>
-<details class="about-work">
-<summary><span class="plate">About the works</span></summary>
+<figure class="work">
+<button class="thumb" type="button" data-full="img/km-expected.jpg" data-title="Expected" data-meta="Karina Mukhametkulova, oil and found door knocker on canvas, 70 × 100 cm, 2026" aria-label="View Expected larger"><img src="img/km-expected.jpg" alt="Expected: a real brass door knocker shaped like a hand, fixed to the centre of a padded magenta space" loading="lazy" width="1600" height="1122"></button>
+<figcaption><span class="plate">Expected</span> <span class="size">70 × 100 cm</span></figcaption>
+</figure>
+<details class="all">
+<summary><span class="plate">Both works</span> <span class="count">2</span></summary>
+<ol class="pieces compact">
+<li class="piece">
+<button class="thumb" type="button" data-full="img/km-expected.jpg" data-title="Expected" data-meta="Karina Mukhametkulova, oil and found door knocker on canvas, 70 × 100 cm, 2026" aria-label="View Expected larger"><img src="img/km-expected.jpg" alt="Expected: a real brass door knocker shaped like a hand, fixed to the centre of a padded magenta space" loading="lazy" width="1600" height="1122"></button>
 <div class="txt">
-<p>We tend to think of reality as something stable and shared by everyone. Yet what we see is largely shaped by what we have learned to notice, and what we have grown accustomed to overlooking.</p>
-<p>The unfamiliar does not necessarily exist beyond the world we know. It may be right in front of us, remaining invisible simply because it does not fit our familiar understanding of reality.</p>
-<p>In her work, Karina explores this boundary of perception. Familiar spaces take on new dimensions, while the distinction between image and reality becomes less certain.</p>
-<p>The viewer is not simply looking at a painting but becomes part of the process of perception itself. Each person notices different details, makes their own connections and discovers meanings that others may not see.</p>
-<p>Rather than revealing another reality, these works question how much of the one we know we are actually able to see.</p>
+<h4>Expected</h4>
+<p class="meta">Oil and found door knocker on canvas · 70 × 100 cm · 2026</p>
+<p>A brass hand hangs where a door might be. It is the only thing here that agrees with gravity.</p>
+<p>The knocker is old and handmade; the painting is new. Only one of them was made for a door.</p>
+<p>A painting lets you see in without asking. The knocker asks anyway.</p>
 </div>
+</li>
+<li class="piece">
+<button class="thumb" type="button" data-full="img/km-usedto.jpg" data-title="Used To" data-meta="Karina Mukhametkulova, oil, acrylic gel and lace on canvas, 50 × 70 cm, 2026" aria-label="View Used To larger"><img src="img/km-usedto.jpg" alt="Used To: an empty blue room with an orange floor; blue-dyed lace grows from the canvas and white lace hangs over its edge" loading="lazy" width="1500" height="1600"></button>
+<div class="txt">
+<h4>Used To</h4>
+<p class="meta">Oil, acrylic gel and lace (former curtain, former pillowcase) on canvas · 50 × 70 cm · 2026</p>
+<p>The lace was a curtain first, then a pillowcase. Now, soaked in blue, it slips over the edge of the canvas and into our space. Where it lay, the skin has kept its pattern.</p>
+<p>By now, neither of them remembers being anything else.</p>
+</div>
+</li>
+</ol>
 </details>
 </article>
 
@@ -787,7 +796,6 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 <p class="label"><span class="plate" style="--r: 1deg">Visit</span></p>
 <h2>12.11 —<br>04.12.2026</h2>
 <p class="opening">Opening: Thursday 12 November, 19:00</p>
-<p>Opening hours will be announced here.</p>
 <p>Hackney Downs Studios, Amhurst Terrace, London E8 2BT. Eat Work Art. A short walk from Hackney Downs and Rectory Road stations.</p>
 </div>
 <div class="pin">
@@ -883,17 +891,46 @@ Scale: 23 days
   if (window.ResizeObserver) stages.forEach(function (st) { new ResizeObserver(fit).observe(st); });
 
 
-  // heat that follows the cursor (and drifts by itself on touch screens)
+  // heat that follows the cursor (and drifts by itself on touch screens).
+  // Three trailing points blend into one heat field; colour and contour lines are drawn
+  // from that single field, so the rings of the three blobs merge instead of crossing.
   var hero = document.querySelector('.hero');
-  var blobs = [].slice.call(document.querySelectorAll('.heat'));
+  var cv = document.querySelector('canvas.heat');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (hero && blobs.length && !reduce) {
+  if (hero && cv && cv.getContext && !reduce) {
+    var ctx = cv.getContext('2d');
+    var off = document.createElement('canvas'), octx = off.getContext('2d');
     var cfg = [{ k: 0.16, d: 0.30 }, { k: 0.075, d: 0.22 }, { k: 0.04, d: 0.16 }];
     var tx = 0, ty = 0, pts = cfg.map(function () { return { x: 0, y: 0 }; });
-    var pointer = false, t0 = performance.now();
+    var pointer = false, t0 = performance.now(), W = 0, H = 0, dpr = 1;
+
+    // colour ramp from the hot centre (0) to the cold edge (0.78)
+    var stops = [[0, 255, 245, 180, 0.95], [0.11, 255, 190, 30, 0.92], [0.21, 250, 90, 30, 0.88], [0.31, 225, 30, 90, 0.78],
+      [0.43, 120, 40, 190, 0.62], [0.55, 40, 80, 220, 0.48], [0.67, 170, 195, 235, 0.32], [0.78, 170, 195, 235, 0]];
+    function ramp(p) {
+      for (var i = 1; i < stops.length; i++) if (p <= stops[i][0]) break;
+      if (i >= stops.length) return [170, 195, 235, 0];
+      var a = stops[i - 1], b = stops[i], u = (p - a[0]) / (b[0] - a[0]);
+      return [a[1] + (b[1] - a[1]) * u, a[2] + (b[2] - a[2]) * u, a[3] + (b[3] - a[3]) * u, a[4] + (b[4] - a[4]) * u];
+    }
+    // field value f in 0..1 -> the distance x (0 centre, 1 edge) a single blob would have there
+    function fx(f) { return Math.sqrt(Math.max(0, 1 - Math.cbrt(Math.min(f, 1)))); }
+    var LUT_N = 1024, lut = new Uint8ClampedArray(LUT_N * 4);
+    for (var n = 0; n < LUT_N; n++) {
+      var c = ramp(0.78 * fx(n / (LUT_N - 1)));
+      lut[n * 4] = c[0]; lut[n * 4 + 1] = c[1]; lut[n * 4 + 2] = c[2]; lut[n * 4 + 3] = c[3] * 255;
+    }
+    // contour rings every 0.11 of a blob radius, fading towards the edge
+    var levels = [];
+    for (var r = 1; r * 0.11 < 1; r++) {
+      var x = r * 0.11, al = x < 0.707 ? 0.9 - 0.4 * x / 0.707 : 0.5 * (1 - (x - 0.707) / 0.313);
+      if (al > 0.01) levels.push({ f: Math.pow(1 - x * x, 3), a: 0.45 * al });
+    }
+
     function size() {
-      var w = hero.clientWidth;
-      blobs.forEach(function (b, i) { b.style.setProperty('--d', Math.round(w * cfg[i].d) + 'px'); });
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = hero.clientWidth; H = hero.clientHeight;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
     }
     size(); addEventListener('resize', size);
     function place(e) {
@@ -906,21 +943,89 @@ Scale: 23 days
       pointer = true; place(e); hero.classList.add('warm');
     });
     hero.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') { pointer = false; } });
-    var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    if (!finePointer) hero.classList.add('warm');
-    else {
-      // until the cursor arrives, let the heat breathe in the empty middle of the map
-      hero.classList.add('warm');
+    hero.classList.add('warm');
+
+    var F = new Float32Array(0);
+    function draw() {
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      var R = cfg.map(function (c) { return W * c.d / 2; });
+      var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+      pts.forEach(function (p, i) {
+        x0 = Math.min(x0, p.x - R[i]); y0 = Math.min(y0, p.y - R[i]);
+        x1 = Math.max(x1, p.x + R[i]); y1 = Math.max(y1, p.y + R[i]);
+      });
+      x0 = Math.max(x0, 0); y0 = Math.max(y0, 0); x1 = Math.min(x1, W); y1 = Math.min(y1, H);
+      if (x1 <= x0 || y1 <= y0) return;
+      var cell = Math.max(3, W / 420);
+      var gx = Math.ceil((x1 - x0) / cell) + 1, gy = Math.ceil((y1 - y0) / cell) + 1;
+      if (F.length < gx * gy) F = new Float32Array(gx * gy);
+      var inv = R.map(function (r) { return 1 / (r * r); });
+      for (var j = 0; j < gy; j++) {
+        var py = y0 + j * cell;
+        for (var i = 0; i < gx; i++) {
+          var px = x0 + i * cell, f = 0;
+          for (var b = 0; b < 3; b++) {
+            var dx = px - pts[b].x, dy = py - pts[b].y, q = (dx * dx + dy * dy) * inv[b];
+            if (q < 1) { var u = 1 - q; f += Math.pow(u, 24); }
+          }
+          // smooth maximum of the three blobs: where they overlap the field stays the size of one blob,
+          // where they part it stretches into one shape with shared rings
+          F[j * gx + i] = Math.pow(f, 1 / 8);
+        }
+      }
+      // colour: one pixel per grid node, scaled up smoothly
+      off.width = gx; off.height = gy;
+      var img = octx.createImageData(gx, gy), d = img.data;
+      for (var k = 0; k < gx * gy; k++) {
+        var li = Math.round(Math.min(F[k], 1) * (LUT_N - 1)) * 4;
+        d[k * 4] = lut[li]; d[k * 4 + 1] = lut[li + 1]; d[k * 4 + 2] = lut[li + 2]; d[k * 4 + 3] = lut[li + 3];
+      }
+      octx.putImageData(img, 0, 0);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(off, x0 - cell / 2, y0 - cell / 2, gx * cell, gy * cell);
+      // contours: marching squares on the same field
+      ctx.lineWidth = 1.2; ctx.lineJoin = 'round';
+      levels.forEach(function (lv) {
+        var L = lv.f;
+        ctx.beginPath();
+        for (var j = 0; j < gy - 1; j++) {
+          for (var i = 0; i < gx - 1; i++) {
+            var a = F[j * gx + i], b = F[j * gx + i + 1], c = F[(j + 1) * gx + i + 1], e = F[(j + 1) * gx + i];
+            var idx = (a > L ? 8 : 0) | (b > L ? 4 : 0) | (c > L ? 2 : 0) | (e > L ? 1 : 0);
+            if (idx === 0 || idx === 15) continue;
+            var X = x0 + i * cell, Y = y0 + j * cell;
+            var top = [X + cell * (L - a) / (b - a), Y], right = [X + cell, Y + cell * (L - b) / (c - b)];
+            var bot = [X + cell * (L - e) / (c - e), Y + cell], left = [X, Y + cell * (L - a) / (e - a)];
+            var segs;
+            switch (idx) {
+              case 1: case 14: segs = [left, bot]; break;
+              case 2: case 13: segs = [bot, right]; break;
+              case 3: case 12: segs = [left, right]; break;
+              case 4: case 11: segs = [top, right]; break;
+              case 6: case 9: segs = [top, bot]; break;
+              case 7: case 8: segs = [left, top]; break;
+              case 5: case 10:
+                var mid = (a + b + c + e) / 4;
+                segs = (idx === 5) === (mid > L) ? [left, top, bot, right] : [left, bot, top, right];
+                break;
+            }
+            for (var s = 0; s < segs.length; s += 2) { ctx.moveTo(segs[s][0], segs[s][1]); ctx.lineTo(segs[s + 1][0], segs[s + 1][1]); }
+          }
+        }
+        ctx.strokeStyle = 'rgba(20, 20, 20, ' + lv.a.toFixed(3) + ')';
+        ctx.stroke();
+      });
     }
+
     function frame(now) {
       if (!pointer) {
-        var t = (now - t0) / 1000, w = hero.clientWidth, h = hero.clientHeight;
-        tx = w * (0.5 + 0.22 * Math.sin(t * 0.23)); ty = h * (0.5 + 0.18 * Math.sin(t * 0.31 + 1.3));
+        var t = (now - t0) / 1000;
+        tx = W * (0.5 + 0.22 * Math.sin(t * 0.23)); ty = H * (0.5 + 0.18 * Math.sin(t * 0.31 + 1.3));
       }
-      pts.forEach(function (p, i) {
-        p.x += (tx - p.x) * cfg[i].k; p.y += (ty - p.y) * cfg[i].k;
-        blobs[i].style.transform = 'translate(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px)';
-      });
+      pts.forEach(function (p, i) { p.x += (tx - p.x) * cfg[i].k; p.y += (ty - p.y) * cfg[i].k; });
+      draw();
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
